@@ -2,7 +2,11 @@ const request = require('request');
 
 const _ = require('lodash');
 
-const desiredCountry = "Brazil"
+let desiredCountry = ""
+
+if (process.argv.length > 2){
+  desiredCountry = process.argv[2]
+}
 
 request({
     'method': 'GET',
@@ -20,11 +24,22 @@ request({
         console.log((index+1) + " | " + element.country + " | " + element.word_length)
     });
 
+    if(desiredCountry==""){
+      return;
+    }
+
     let selectedCountryPosition = _.findIndex(listNotNullWordLength, function(n){
         return n.country == desiredCountry
     } , 0)
 
     console.log("##############################################")
-    console.log((selectedCountryPosition+1) + " | " + listNotNullWordLength[selectedCountryPosition].country + " | " + listNotNullWordLength[selectedCountryPosition].word_length)
+
+    if(selectedCountryPosition>=0){
+      console.log((selectedCountryPosition+1) + " | " + listNotNullWordLength[selectedCountryPosition].country + " | " + listNotNullWordLength[selectedCountryPosition].word_length)
+    }
+    else{
+      console.log("The desired country " + desiredCountry + " was not found in the ranking")
+    }
+
 
   });
