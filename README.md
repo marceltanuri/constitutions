@@ -1,7 +1,8 @@
 # constitutions
 
-List constitutions of all countries listed in the constituteproject.org
-The list is sorted by numer of words, which results in a list of the longest constitutions in the world.
+List constitutions of all countries listed in the constituteproject.org.
+
+The list is sorted by number of words, which results in a list of the longest constitutions in the world.
 
 It is a simple node application:
 
